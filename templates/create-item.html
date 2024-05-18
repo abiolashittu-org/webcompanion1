@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>Marketplace Template</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='img/core-img/favicon.ico') }}">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Responsive Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+
+</head>
+
+<body class="darker">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preload-content">
+            <div id="dream-load"></div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <nav class="navbar navbar-expand-lg navbar-white fixed-top" id="banner">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#"><span><img src="{{ url_for('static', filename='img/core-img/logo.png') }}" alt="logo"></span> </a>
+
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown">Home</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ url_for('index_demo_1') }}">Demo 1</a>
+                            <a class="dropdown-item" href="{{ url_for('index_demo_2') }}">Demo 2</a>
+                            <a class="dropdown-item" href="{{ url_for('index_demo_3') }}">Demo 3</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown">Explore</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ url_for('discover') }}">Explore style 1</a>
+                            <a class="dropdown-item" href="{{ url_for('discover_2') }}">Explore style 2</a>
+                            <a class="dropdown-item" href="{{ url_for('discover_3') }}">Explore style 3</a>
+                            <a class="dropdown-item" href="{{ url_for('item_details') }}">Item Details</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('on_sale') }}">On Sale</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown">Community</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ url_for('index_blog') }}">Blog 1</a>
+                            <a class="dropdown-item" href="{{ url_for('index_blog_with_sidebar') }}">Blog 2</a>
+                            <a class="dropdown-item" href="{{ url_for('index_single_blog') }}">Post Details</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ url_for('create_item') }}">Upload Item</a>
+                            <a class="dropdown-item" href="{{ url_for('shopping_cart') }}">Shopping Cart</a>
+                            <a class="dropdown-item" href="{{ url_for('authors') }}">Authors</a>
+                            <a class="dropdown-item" href="{{ url_for('profile') }}">Author Profile</a>
+                            <a class="dropdown-item" href="{{ url_for('login') }}">Login</a>
+                            <a class="dropdown-item" href="{{ url_for('signup') }}">Sign Up</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('contact_us') }}">Contact</a>
+                    </li>
+                    <li class="lh-55px">
+                        <div class="btn btn--primary">
+                            <a href="{{ url_for('login') }}" class="btn__container">Login</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Welcome Area Start ##### -->
+    <div class="breadcumb-area clearfix">
+        
+        <!-- breadcumb content -->
+        <div class="breadcumb-content">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12">
+                        <nav aria-label="breadcrumb" class="breadcumb--con text-center">
+                            <h2 class="title wow fadeInUp" data-wow-delay="0.2s">Upload New Item</h2>
+                            <ol class="breadcrumb justify-content-center wow fadeInUp" data-wow-delay="0.4s">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Upload Item</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Welcome Area End ##### -->
+
+    
+    <!-- ##### Area Start ##### -->
+    <section class="blog-area section-padding-100">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-12 col-lg-3">
+
+                    <div class="pricing-item ">
+                        <div class="wraper">
+                            <div class="owner-info">
+                                <img src="{{ url_for('static', filename='img/authors/13.png') }}" width="40" alt="">
+                                <img src="{{ url_for('static', filename='img/core-img/check.png') }}" width="20" class="check-img" alt="">
+                                <a href="{{ url_for('profile') }}"><h3>@Smith Wright</h3></a>
+                            </div>
+                            <a href="{{ url_for('item_details') }}"><img src="{{ url_for('static', filename='img/art-work/1.png') }}" alt=""></a>
+                            <a href="{{ url_for('item_details') }}"><h4>Darklight Angel 01</h4></a>
+                            
+                            <span>Price : <span class="usd-price ml-15">$ 15.00</span></span> 
+
+                            <div class="admire">
+                                <div class="adm"><i class="fa fa-list-alt"></i>Midjourney</div>
+                                <div class="adm"><i class="fa fa-heart-o"></i>No Likes Yet</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-8">
+                    <div class="creator-sec dd-bg">
+                        <div class="who-we-contant">
+                            <div class="dream-dots text-left fadeInUp" data-wow-delay="0.2s">
+                                <span class="gradient-text ">Add Prompt Item</span>
+                            </div>
+                            <h4 class="fadeInUp" data-wow-delay="0.3s">Create AI Prompt</h4>
+                        </div>
+                        <div class="contact_form">
+                            <form action="#" method="post" id="main_contact_form" novalidate>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div id="success_fail_info"></div>
+                                    </div>
+
+                                    <div class="col-12 col-md-12">
+                                        <p class="w-text">Upload Item File</p>
+                                        <div class="group-file">
+                                            <p class="g-text">PNG, GIF, WEBP, MP4 or MP3. Max 100mb</p>
+                                            <div class="new_Btn more-btn">Upload File</div><br>
+                                            <input type="file" name="upload" id="upload-btn" required>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-12">
+                                        <div class="group">
+                                            <input type="text" name="name" id="name" required>
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <label>Item name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="group">
+                                            <textarea name="Description" id="Description" required></textarea>
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <label>Item Description</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-12">
+                                        <div class="group">
+                                            <input type="text" name="prompt" id="prompt" required>
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <label>AI Prompt</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="group">
+                                            <textarea name="prompt-desc" id="prompt-desc" required></textarea>
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <label>Prompt Instructions</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-12">
+                                        <div class="mb-15">
+                                            <p>Choose AI Model</p>
+                                            <select id="ai-models">
+                                                <option value="midjourney" selected>Midjourney</option>
+                                                <option value="gpt">GPT prompts</option>
+                                                <option value="dalle">DALL·E</option>
+                                                <option value="Leonardo Ai">Leonardo Ai</option>
+                                                <option value="Stable Diffusion">Stable Diffusion</option>
+                                                <option value="Bard Prompts">Bard Prompts</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-12">
+                                        <div class="mb-15">
+                                            <p>Choose item Category</p>
+                                            <div class="filers-list ">
+                                                <a href="" class="filter-item">
+                                                    <img src="{{ url_for('static', filename='img/icons/f1.png') }}" alt="">Art
+                                                </a>
+                                                <a href="" class="filter-item">
+                                                    <img src="{{ url_for('static', filename='img/icons/f5.png') }}" alt="">Virtual Worlds
+                                                </a>
+                                                <a href="" class="filter-item">
+                                                    <img src="{{ url_for('static', filename='img/icons/f2.png') }}" alt="">Anime
+                                                </a>
+                                                <a href="" class="filter-item">
+                                                    <img src="{{ url_for('static', filename='img/icons/f3.png') }}" alt="">Cartoons
+                                                </a>
+                                                <a href="" class="filter-item">
+                                                    <img src="{{ url_for('static', filename='img/icons/f4.png') }}" alt="">Collectibles
+                                                </a>
+                                                <a href="" class="filter-item">
+                                                    <img src="{{ url_for('static', filename='img/icons/f6.png') }}" alt="">Gifts
+                                                </a>
+                                                <a href="" class="filter-item">
+                                                    <img src="{{ url_for('static', filename='img/icons/f7.png') }}" alt="">Trading Cards
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-12 col-md-12">
+                                        <div class="group">
+                                            <input type="text" name="Price" id="Price" required>
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <label>Item Price in USD</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="group">
+                                            <input type="text" name="Sampler" id="Sampler" required>
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <label>Sampler</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="group">
+                                            <input type="text" name="Size" id="Size" required>
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <label>Size</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-12 text-center">
+                                        <button type="submit" class="more-btn mb-15">Upload Item</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    </section>
+    <!-- ##### Blog Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="main-footer text-center">
+    <!--Widgets Section-->
+      <div class="widgets-section padding-top-small padding-bottom-small">
+         <div class="container">
+             
+            <div class="row clearfix">
+               <!--Footer Column-->
+               <div class="footer-column col-md-4 col-sm-6 col-xs-12">
+                  <div class="footer-widget about-widget">
+                     <h3 class="has-line-center">About Us</h3>
+                     <div class="widget-content">
+                        <div class="text">At the end of the day, going forward, a new normal that has evolved generation X is on the runway heading towards a streamlined cloud solution. </div>
+                           <ul class="social-links">
+                              <li><a href="#"><span class="fa fa-facebook-f"></span></a></li>
+                              <li><a href="#"><span class="fa fa-twitter"></span></a></li>
+                              <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
+                              <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
+                              <li><a href="#"><span class="fa fa-instagram"></span></a></li>
+                           </ul>
+                         </div>
+                     </div>
+                 </div><!--End Footer Column-->
+                 
+                 <!--Footer Column-->
+                 <div class="footer-column col-md-4 col-sm-6 col-xs-12">
+                     <div class="footer-widget contact-widget">
+                         <h3 class="has-line-center">Contact Us</h3>
+                         <div class="widget-content">
+                             <ul class="contact-info">
+                                 <li><div class="icon"><span class="flaticon-support"></span></div></li>
+                                 <li>10, Mc Donald Avenue, Sunset Park, Newyork</li>
+                                 <li>+99 999 9999</li>
+                                 <li>info@yourdomain.com</li>
+                             </ul>
+                         </div>
+                     </div>
+                 </div><!--End Footer Column-->
+                 
+                 <!--Footer Column-->
+                 <div class="footer-column col-md-4 col-sm-12 col-xs-12">
+                     <div class="footer-widget newsletter-widget">
+                         <h3 class="has-line-center">Newsletter</h3>
+                         <div class="widget-content">
+                           <div class="text">Stay Updated with our latest news. We promise not to spam</div>
+                             <div class="newsletter-form">
+                                 <form method="post">
+                                     <div class="form-group">
+                                         <input type="email" name="field-name" value="" placeholder="Your Email" required="">
+                                         <button type="submit" class="send-btn"><span class="fa fa-paper-plane-o"></span></button>
+                                     </div>
+                                 </form>
+                             </div>
+                         </div>
+                     </div>
+                 </div><!--End Footer Column-->
+                 
+             </div>
+         </div>
+     </div>
+     
+     <!--Footer Bottom-->
+      <div class="footer-bottom">
+         <div class="auto-container">
+            <div class="copyright-text">Copyright ©. All Rights Reserved</div>
+         </div>
+      </div>
+    </footer>
+    <!-- ##### Footer Area End ##### -->
+
+    <!-- ########## All JS ########## -->
+    <!-- jQuery js -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <!-- Popper js -->
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <!-- Bootstrap js -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <!-- All Plugins js -->
+    <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
+    
+    
+    <!-- Active js -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>

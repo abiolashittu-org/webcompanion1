@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>Marketplace Template</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='img/core-img/favicon.ico') }}">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Responsive Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+
+</head>
+
+<body class="darker">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preload-content">
+            <div id="dream-load"></div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <nav class="navbar navbar-expand-lg navbar-white fixed-top" id="banner">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#"><span><img src="{{ url_for('static', filename='img/core-img/logo.png') }}" alt="logo"></span> </a>
+
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown">Home</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ url_for('index_demo_1') }}">Demo 1</a>
+                            <a class="dropdown-item" href="{{ url_for('index_demo_2') }}">Demo 2</a>
+                            <a class="dropdown-item" href="{{ url_for('index_demo_3') }}">Demo 3</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown">Explore</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ url_for('discover') }}">Explore style 1</a>
+                            <a class="dropdown-item" href="{{ url_for('discover_2') }}">Explore style 2</a>
+                            <a class="dropdown-item" href="{{ url_for('discover_3') }}">Explore style 3</a>
+                            <a class="dropdown-item" href="{{ url_for('item_details') }}">Item Details</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('on_sale') }}">On Sale</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown">Community</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ url_for('index_blog') }}">Blog 1</a>
+                            <a class="dropdown-item" href="{{ url_for('index_blog_with_sidebar') }}">Blog 2</a>
+                            <a class="dropdown-item" href="{{ url_for('index_single_blog') }}">Post Details</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ url_for('create_item') }}">Upload Item</a>
+                            <a class="dropdown-item" href="{{ url_for('shopping_cart') }}">Shopping Cart</a>
+                            <a class="dropdown-item" href="{{ url_for('authors') }}">Authors</a>
+                            <a class="dropdown-item" href="{{ url_for('profile') }}">Author Profile</a>
+                            <a class="dropdown-item" href="{{ url_for('login') }}">Login</a>
+                            <a class="dropdown-item" href="{{ url_for('signup') }}">Sign Up</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('contact_us') }}">Contact</a>
+                    </li>
+                    <li class="lh-55px">
+                        <div class="btn btn--primary">
+                            <a href="{{ url_for('logout') }}" class="btn__container">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Welcome Area Start ##### -->
+    <div class="breadcumb-area clearfix">
+        
+        <!-- breadcumb content -->
+        <div class="breadcumb-content">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12">
+                        <nav aria-label="breadcrumb" class="breadcumb--con text-center">
+                            <h2 class="title wow fadeInUp" data-wow-delay="0.2s">Author Profile</h2>
+                            <ol class="breadcrumb justify-content-center wow fadeInUp" data-wow-delay="0.4s">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Author Profile</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Welcome Area End ##### -->
+
+    
+    <!-- ##### Area Start ##### -->
+    <section class="blog-area section-padding-100">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-12 col-lg-3">
+
+                   <div class="service_single_content collection-item">
+                        <!-- Icon -->
+                        <div class="collection_icon">
+                            <img src="{{ url_for('static', filename='img/art-work/profile-header.jpg') }}" class="center-block" alt="">
+                        </div>
+                        <span class="aut-info">
+                            <img src="{{ url_for('static', filename='img/authors/2.png') }}" width="50" alt="">
+                        </span>
+                        <div class="collection_info text-center">
+                            <h6>{{ user }}</h6>
+                            <p class="w-text mr-5p">AI Prompt Developer<img src="{{ url_for('static', filename='img/art-work/fire.png') }}" width="20" alt=""></p>
+                            <p class="mt-15">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos distinctio labore.</p>
+
+                            <div class="search-widget-area mt-15">
+                                <form action="#" method="post">
+                                    <input type="text" name="wallet" id="wallet" value="Xjo03s-osi6732...">
+                                    <button class="btn"><i class="fa fa-copy"></i></button>
+                                </form>
+                            </div>
+
+                            <ul class="social-links mt-15">
+                              <li><a href="#"><span class="fa fa-facebook-f"></span></a></li>
+                              <li><a href="#"><span class="fa fa-twitter"></span></a></li>
+                              <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
+                              <li><a href="#"><span class="fa fa-instagram"></span></a></li>
+                           </ul>
+
+                            <a href="{{ url_for('profile') }}" class="more-btn mt-15">Follow</a>
+                        </div>
+                        
+                    </div>
+
+                        
+                </div>
+                <div class="col-12 col-md-9">
+                    <!-- Projects Menu -->
+                    <div class="dream-projects-menu mb-50">
+                        <div class="text-center portfolio-menu">
+                            <button class="btn active" data-filter="*">All</button>
+                            <button class="btn" data-filter=".mid">Midjourney</button>
+                            <button class="btn" data-filter=".dall">DALL·E</button>
+                            <button class="btn" data-filter=".gpt">GPT</button>
+                            <button class="btn" data-filter=".leo">Leonardo Ai</button>
+                            <button class="btn" data-filter=".bard">Bard</button>
+                            <button class="btn" data-filter=".stable">Stable Diffusion</button>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row dream-portfolio">
+
+                            <!-- Single gallery Item -->
+                            <div class="col-12 col-md-6 col-lg-4 single_gallery_item mid wow fadeInUp" data-wow-delay="0.2s">
+                                <div class="pricing-item ">
+                                    <div class="wraper">
+                                        <div class="owner-info">
+                                            <img src="{{ url_for('static', filename='img/authors/9.png') }}" width="40" alt="">
+                                            <img src="{{ url_for('static', filename='img/core-img/check.png') }}" width="20" class="check-img" alt="">
+                                            <a href="{{ url_for('profile') }}"><h3>@Smith Wright</h3></a>
+                                        </div>
+                                        <a href="{{ url_for('item_details') }}"><img src="{{ url_for('static', filename='img/art-work/1.png') }}" alt=""></a>
+                                        <a href="{{ url_for('item_details') }}"><h4>Scarecrow in daylight</h4></a>
+                                        
+                                        <span>Price : <span class="usd-price ml-15">$ 10.00</span></span> 
+                                        
+                                        <div class="admire">
+                                            <div class="adm"><i class="fa fa-list-alt"></i>Midjourney</div>
+                                            <div class="adm"><i class="fa fa-heart-o"></i>134 Like</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Single gallery Item -->
+                            <div class="col-12 col-md-6 col-lg-4 single_gallery_item dall wow fadeInUp" data-wow-delay="0.3s">
+                                <div class="pricing-item ">
+                                    <div class="wraper">
+                                        <div class="owner-info">
+                                            <img src="{{ url_for('static', filename='img/authors/10.png') }}" width="40" alt="">
+                                            <img src="{{ url_for('static', filename='img/core-img/check.png') }}" width="20" class="check-img" alt="">
+                                            <a href="{{ url_for('profile') }}"><h3>@Smith Wright</h3></a>
+                                        </div>
+                                        <a href="{{ url_for('item_details') }}"><img src="{{ url_for('static', filename='img/art-work/2.png') }}" alt=""></a>
+                                        <a href="{{ url_for('item_details') }}"><h4>Darklight Angel 01</h4></a>
+                                        
+                                        <span>Price : <span class="usd-price ml-15">$ 15.00</span></span> 
+
+                                        <div class="admire">
+                                            <div class="adm"><i class="fa fa-list-alt"></i>DALL·E</div>
+                                            <div class="adm"><i class="fa fa-heart-o"></i>134 Like</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+
+                            <!-- Single gallery Item -->
+                            <div class="col-12 col-md-6 col-lg-4 single_gallery_item bard wow fadeInUp" data-wow-delay="0.4s">
+                                <div class="pricing-item ">
+                                    <div class="wraper">
+                                        <div class="owner-info">
+                                            <img src="{{ url_for('static', filename='img/authors/11.png') }}" width="40" alt="">
+                                            <img src="{{ url_for('static', filename='img/core-img/check.png') }}" width="20" class="check-img" alt="">
+                                            <a href="{{ url_for('profile') }}"><h3>@Smith Wright</h3></a>
+                                        </div>
+                                        <a href="{{ url_for('item_details') }}"><img src="{{ url_for('static', filename='img/art-work/3.png') }}" alt=""></a>
+                                        <a href="{{ url_for('item_details') }}"><h4>Becoming one with Nature</h4></a>
+                                        
+                                        <span>Price : <span class="usd-price ml-15">$ 19.00</span></span>
+                                        
+                                        <div class="admire">
+                                            <div class="adm"><i class="fa fa-list-alt"></i>Leonardo Ai</div>
+                                            <div class="adm"><i class="fa fa-heart-o"></i>134 Like</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Single gallery Item -->
+                            <div class="col-12 col-md-6 col-lg-4 single_gallery_item leo wow fadeInUp" data-wow-delay="0.5s">
+                                <div class="pricing-item ">
+                                    <div class="wraper">
+                                        <div class="owner-info">
+                                            <img src="{{ url_for('static', filename='img/authors/12.png') }}" width="40" alt="">
+                                            <img src="{{ url_for('static', filename='img/core-img/check.png') }}" width="20" class="check-img" alt="">
+                                            <a href="{{ url_for('profile') }}"><h3>@Smith Wright</h3></a>
+                                        </div>
+                                        <a href="{{ url_for('item_details') }}"><img src="{{ url_for('static', filename='img/art-work/4.png') }}" alt=""></a>
+                                        <a href="{{ url_for('item_details') }}"><h4>Twilight Fracture City</h4></a>
+                                        
+                                        <span>Price : <span class="usd-price ml-15">$ 39.00</span></span>
+
+                                        <div class="admire">
+                                            <div class="adm"><i class="fa fa-list-alt"></i>GPT prompts</div>
+                                            <div class="adm"><i class="fa fa-heart-o"></i>134 Like</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+
+                            <!-- Single gallery Item -->
+                            <div class="col-12 col-md-6 col-lg-4 single_gallery_item stable wow fadeInUp" data-wow-delay="0.6s">
+                                <div class="pricing-item ">
+                                    <div class="wraper">
+                                        <div class="owner-info">
+                                            <img src="{{ url_for('static', filename='img/authors/13.png') }}" width="40" alt="">
+                                            <img src="{{ url_for('static', filename='img/core-img/check.png') }}" width="20" class="check-img" alt="">
+                                            <a href="{{ url_for('profile') }}"><h3>@Smith Wright</h3></a>
+                                        </div>
+                                        <a href="{{ url_for('item_details') }}"><img src="{{ url_for('static', filename='img/art-work/5.png') }}" alt=""></a>
+                                        <a href="{{ url_for('item_details') }}"><h4>Resonate Sanctuary II</h4></a>
+                                        
+                                        <span>Price : <span class="usd-price ml-15">$ 25.00</span></span>
+
+                                        <div class="admire">
+                                            <div class="adm"><i class="fa fa-list-alt"></i>Stable Diffusion</div>
+                                            <div class="adm"><i class="fa fa-heart-o"></i>134 Like</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Single gallery Item -->
+                            <div class="col-12 col-md-6 col-lg-4 single_gallery_item gpt wow fadeInUp" data-wow-delay="0.7s">
+                                <div class="pricing-item ">
+                                    <div class="wraper">
+                                        <div class="owner-info">
+                                            <img src="{{ url_for('static', filename='img/authors/14.png') }}" width="40" alt="">
+                                            <img src="{{ url_for('static', filename='img/core-img/check.png') }}" width="20" class="check-img" alt="">
+                                            <a href="{{ url_for('profile') }}"><h3>@Smith Wright</h3></a>
+                                        </div>
+                                        <a href="{{ url_for('item_details') }}"><img src="{{ url_for('static', filename='img/art-work/6.png') }}" alt=""></a>
+                                        <a href="{{ url_for('item_details') }}"><h4>Analogue refraction #3</h4></a>
+                                        
+                                        <span>Price : <span class="usd-price ml-15">$ 17.00</span></span>
+
+                                        <div class="admire">
+                                            <div class="adm"><i class="fa fa-list-alt"></i>Midjourney</div>
+                                            <div class="adm"><i class="fa fa-heart-o"></i>134 Like</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-12 text-center">
+                            <div class="btn btn--primary">
+                                <div class="btn__container">
+                                Load More
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+    <!-- ##### Blog Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="main-footer text-center">
+    <!--Widgets Section-->
+      <div class="widgets-section padding-top-small padding-bottom-small">
+         <div class="container">
+             
+            <div class="row clearfix">
+               <!--Footer Column-->
+               <div class="footer-column col-md-4 col-sm-6 col-xs-12">
+                  <div class="footer-widget about-widget">
+                     <h3 class="has-line-center">About Us</h3>
+                     <div class="widget-content">
+                        <div class="text">At the end of the day, going forward, a new normal that has evolved generation X is on the runway heading towards a streamlined cloud solution. </div>
+                           <ul class="social-links">
+                              <li><a href="#"><span class="fa fa-facebook-f"></span></a></li>
+                              <li><a href="#"><span class="fa fa-twitter"></span></a></li>
+                              <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
+                              <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
+                              <li><a href="#"><span class="fa fa-instagram"></span></a></li>
+                           </ul>
+                         </div>
+                     </div>
+                 </div><!--End Footer Column-->
+                 
+                 <!--Footer Column-->
+                 <div class="footer-column col-md-4 col-sm-6 col-xs-12">
+                     <div class="footer-widget contact-widget">
+                         <h3 class="has-line-center">Contact Us</h3>
+                         <div class="widget-content">
+                             <ul class="contact-info">
+                                 <li><div class="icon"><span class="flaticon-support"></span></div></li>
+                                 <li>10, Mc Donald Avenue, Sunset Park, Newyork</li>
+                                 <li>+99 999 9999</li>
+                                 <li>info@yourdomain.com</li>
+                             </ul>
+                         </div>
+                     </div>
+                 </div><!--End Footer Column-->
+                 
+                 <!--Footer Column-->
+                 <div class="footer-column col-md-4 col-sm-12 col-xs-12">
+                     <div class="footer-widget newsletter-widget">
+                         <h3 class="has-line-center">Newsletter</h3>
+                         <div class="widget-content">
+                           <div class="text">Stay Updated with our latest news. We promise not to spam</div>
+                             <div class="newsletter-form">
+                                 <form method="post">
+                                     <div class="form-group">
+                                         <input type="email" name="field-name" value="" placeholder="Your Email" required="">
+                                         <button type="submit" class="send-btn"><span class="fa fa-paper-plane-o"></span></button>
+                                     </div>
+                                 </form>
+                             </div>
+                         </div>
+                     </div>
+                 </div><!--End Footer Column-->
+                 
+             </div>
+         </div>
+     </div>
+     
+     <!--Footer Bottom-->
+      <div class="footer-bottom">
+         <div class="auto-container">
+            <div class="copyright-text">Copyright ©. All Rights Reserved</div>
+         </div>
+      </div>
+    </footer>
+    <!-- ##### Footer Area End ##### -->
+
+    <!-- ########## All JS ########## -->
+    <!-- jQuery js -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <!-- Popper js -->
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <!-- Bootstrap js -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <!-- All Plugins js -->
+    <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
+    
+    
+    <!-- Active js -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>
