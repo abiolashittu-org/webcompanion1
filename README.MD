@@ -1,4 +1,5 @@
 # webcompanion
+[![Quality Gate Status](https://sonarqube.africantech.dev/api/project_badges/measure?project=webcompanion&metric=alert_status&token=sqb_89d2cd83d2e02c6964e68888f9f06e43e108ec4a)](https://sonarqube.africantech.dev/dashboard?id=webcompanion)
 
 ## Overview
 This Flask application, named WebCompanion, provides a simple web interface for managing tasks.
