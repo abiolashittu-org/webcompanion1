@@ -4,3 +4,6 @@ waitress
 python-dotenv
 Flask-SQLAlchemy
 passlib
+gunicorn
+pytest
+pytest-flask
