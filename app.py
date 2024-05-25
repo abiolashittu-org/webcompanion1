@@ -9,7 +9,7 @@ from passlib.hash import sha256_crypt
 import logging
 from functools import wraps
 
-logging.basicConfig(filename='flask_errors.log')
+logging.basicConfig(level=logging.DEBUG)
 
 load_dotenv()
 basedir = os.path.abspath(os.path.dirname(__file__))
