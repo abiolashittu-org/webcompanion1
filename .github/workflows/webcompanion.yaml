@@ -82,7 +82,7 @@ jobs:
         env:
             IMAGE_TAG: "dev-${{ github.run_id }}"
 
-        if: ${{ startsWith(github.ref, 'refs/heads/dev') && github.event_name == 'pull_request' }}
+        if: ${{ startsWith(github.ref, 'refs/heads/dev') && github.event_name == 'push' }}
         steps:
             - name: Checkout code
               uses: actions/checkout@v2
@@ -126,7 +126,7 @@ jobs:
         needs: sonarcloud-scan
         env:
             IMAGE_TAG: "qa-${{ github.run_id }}"
-        if: ${{ startsWith(github.ref, 'refs/heads/qa') && github.event_name == 'pull_request' }}
+        if: ${{ startsWith(github.ref, 'refs/heads/qa') && github.event_name == 'push' }}
         steps:
             - name: Checkout code
               uses: actions/checkout@v2
@@ -170,7 +170,7 @@ jobs:
         needs: sonarcloud-scan
         env:
             IMAGE_TAG: "prod-${{ github.run_id }}"
-        if: ${{ startsWith(github.ref, 'refs/heads/main') && github.event_name == 'pull_request' }}
+        if: ${{ startsWith(github.ref, 'refs/heads/main') && github.event_name == 'push' }}
         steps:
             - name: Checkout code
               uses: actions/checkout@v2
