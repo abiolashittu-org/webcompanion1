@@ -17,7 +17,7 @@ on:
             - dev
 
 jobs:
-    check-branch:
+    Check-branch:
         runs-on: ubuntu-latest
         steps:
             - name: Check if branch is valid
@@ -26,10 +26,10 @@ jobs:
                     echo "Invalid branch name. Exiting..."
                     exit 1
                 fi
-    test-on-branches:
-        name: Test on branches
+    Pytest:
+        name: Pytest
         runs-on: ubuntu-latest
-        needs: check-branch
+        needs: Check-branch
         if: ${{ startsWith(github.ref, 'refs/heads/dev') }} || ${{ startsWith(github.ref, 'refs/heads/qa') }} || ${{ startsWith(github.ref, 'refs/heads/main') }} && github.event_name == 'push'
         steps:
             - name: Checkout code
@@ -52,10 +52,10 @@ jobs:
                 source venv/bin/activate
                 pytest
 
-    sonarcloud-scan:
+    Sonarcloud-Scan:
         name: SonarCloud Scan
         runs-on: ubuntu-latest
-        needs: test-on-branches
+        needs: Pytest
         if: ${{ startsWith(github.ref, 'refs/heads/dev') }} || ${{ startsWith(github.ref, 'refs/heads/qa') }} || ${{ startsWith(github.ref, 'refs/heads/main') }} && github.event_name == 'pull_request'
         steps:
             - name: Checkout code
@@ -77,7 +77,7 @@ jobs:
     build-deploy-dev:
         name: Build and Deploy to Dev
         runs-on: ubuntu-latest
-        needs: sonarcloud-scan
+        needs: Sonarcloud-Scan
 
         env:
             IMAGE_TAG: "dev-${{ github.run_id }}"
@@ -110,6 +110,7 @@ jobs:
             
             - name: Scan Docker image
               run: |
+                docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
                 trivy image ${{ secrets.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
 
             - name: Push Docker image
@@ -123,7 +124,7 @@ jobs:
     build-deploy-qa:
         name: Build and Deploy to QA
         runs-on: ubuntu-latest
-        needs: sonarcloud-scan
+        needs: Sonarcloud-Scan
         env:
             IMAGE_TAG: "qa-${{ github.run_id }}"
         if: ${{ startsWith(github.ref, 'refs/heads/qa') && github.event_name == 'push' }}
@@ -154,6 +155,7 @@ jobs:
             
             - name: Scan Docker image
               run: |
+                docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
                 trivy image ${{ secrets.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
 
             - name: Push Docker image
@@ -167,7 +169,7 @@ jobs:
     build-deploy-prod:
         name: Build and Deploy to Prod
         runs-on: ubuntu-latest
-        needs: sonarcloud-scan
+        needs: Sonarcloud-Scan
         env:
             IMAGE_TAG: "prod-${{ github.run_id }}"
         if: ${{ startsWith(github.ref, 'refs/heads/main') && github.event_name == 'push' }}
@@ -198,6 +200,7 @@ jobs:
             
             - name: Scan Docker image
               run: |
+                docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
                 trivy image ${{ secrets.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
 
             - name: Push Docker image
