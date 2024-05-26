@@ -23,7 +23,7 @@ spec:
                       - k8s
       containers:
         - name: webcompanion-deployment
-          image: shittuay/webcompanion:dev-9233708121
+          image: shittuay/webcompanion:dev-9233792230
           resources:
             limits:
               memory: "128Mi"
