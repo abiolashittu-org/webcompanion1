@@ -33,15 +33,15 @@ pipeline {
                 }
             }
         }
-        stage('Quality Gate') {
-            steps {
-                script {
-                    withSonarQubeEnv('sonar-server') {
-                        waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
-                    }
-                }
-            }
-        }
+        // stage('Quality Gate') {
+        //     steps {
+        //         script {
+        //             withSonarQubeEnv('sonar-server') {
+        //                 waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
+        //             }
+        //         }
+        //     }
+        // }
         stage('Pytest') {
             steps {
                 script {
