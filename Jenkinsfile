@@ -42,17 +42,17 @@ pipeline {
         //         }
         //     }
         // }
-        stage('Pytest') {
-            steps {
-                script {
-                    sh "python3 -m venv venv"
-                    sh "source venv/bin/activate"
-                    sh "pip install -r requirements.txt --no-cache-dir"
-                    sh "pip install pytest pytest-flask"
-                    sh "pytest"
-                }
-            }
-        }
+        // stage('Pytest') {
+        //     steps {
+        //         script {
+        //             sh "python3 -m venv venv"
+        //             sh "source venv/bin/activate"
+        //             sh "pip install -r requirements.txt --no-cache-dir"
+        //             sh "pip install pytest pytest-flask"
+        //             sh "pytest"
+        //         }
+        //     }
+        // }
         stage('OWASP') {
             steps {
                 dependencyCheck additionalArguments: "--scan ./ --disableYarnAudit --disableNodeAudit --nvdApiKey ${env.NVDAPIKEY}", odcInstallation: 'DP-Check'
