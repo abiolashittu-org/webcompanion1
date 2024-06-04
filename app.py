@@ -103,6 +103,11 @@ def shopping_cart():
 def authors():
     return render_template('authors.html')
 
+@app.route('/')
+def index_demo_1():
+    session.pop('cookie', None)
+    return render_template('webcompanion.html')
+
 @app.route('/profile')
 @login_required
 def profile():
