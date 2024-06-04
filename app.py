@@ -9,7 +9,7 @@ from passlib.hash import sha256_crypt
 import logging
 from functools import wraps
 
-logging.basicConfig(filename='flask_errors.log')
+logging.basicConfig(level=logging.DEBUG)
 
 load_dotenv()
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -18,7 +18,7 @@ app = Flask(__name__)
 app.config['secret_key'] = secrets.token_hex(64)
 app.config['APP_TOKEN'] = secrets.token_hex(400)
 app.config['USER_TOKEN'] = secrets.token_hex(64)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+ os.path.join(basedir, 'database.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+ os.path.join(basedir, 'webcompanion.db')
 CORS(app)
 app.secret_key = secrets.token_hex(64)
 
@@ -103,6 +103,11 @@ def shopping_cart():
 def authors():
     return render_template('authors.html')
 
+@app.route('/')
+def index_demo_1():
+    session.pop('cookie', None)
+    return render_template('webcompanion.html')
+
 @app.route('/profile')
 @login_required
 def profile():
@@ -171,7 +176,7 @@ def signup():
             user = User(
                 fullName=name,
                 email = email,
-                password = sha256_crypt.encrypt(password)
+                password = sha256_crypt.hash(password)
             )
             db.session.add(user)
             db.session.commit()
@@ -193,5 +198,54 @@ def add_headers(response):
         response.headers[key] = value
     return response
 
+@app.errorhandler(404)
+def page_not_found(e):
+    response = """
+    <html>
+        <head>
+            <title>404 Not Found</title>
+        </head>
+        <body style="text-align: center; margin-top: 100px; justify-content: center;">
+            <h1>404 Not Found</h1>
+            <p>The page you are looking for is not found. Click <a href="/">here</a> to go back to the homepage</p>
+        </body>
+        </html>
+        """
+    return response, 404
+@app.errorhandler(500)
+def internal_server_error(e):
+    response = """
+    <html>
+        <head>
+            <title>500 Internal Server Error</title>
+        </head>
+        <body style="text-align: center; margin-top: 100px; justify-content: center;">
+            <h1>500 Internal Server Error</h1>
+            <p>An internal server error occurred. Click <a href="/">here</a> to go back to the homepage</p>
+        </body>
+        </html>
+        """
+    return response, 500
+
+@app.route('/favicon.ico')
+def favicon():
+    return redirect(url_for('static', filename='img/core-img/favicon.ico'))
+
+@app.errorhandler(504)
+def gateway_timeout(e):
+    response = """
+    <html>
+        <head>
+            <title>504 Gateway Timeout</title>
+        </head>
+        <body style="text-align: center; margin-top: 100px; justify-content: center;">
+            <h1>504 Gateway Timeout</h1>
+            <p>The server took too long to respond. Click <a href="/">here</a> to go back to the homepage</p>
+        </body>
+        </html>
+        """
+    return response, 504
+
 if __name__ == '__main__':
+    db.create_all()
     app.run(debug=True, host='0.0.0.0', port=5000)

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webcompanion-deployment
+  namespace: webcompanion
+spec:
+  selector:
+    matchLabels:
+      app: webcompanion-deployment
+  template:
+    metadata:
+      labels:
+        app: webcompanion-deployment
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: custom-label
+                    operator: In
+                    values:
+                      - k8s
+      containers:
+        - name: webcompanion-deployment
+          image: shittuay/webcompanion:dev-9233792230
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 5000
