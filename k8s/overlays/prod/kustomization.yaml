@@ -25,7 +25,7 @@ labels:
   - includeSelectors: true
     pairs:
       env: prod
-      note: MAKE_SURE_TO_USE_WORKING_IMAGE
+      # note: MAKE_SURE_TO_USE_WORKING_IMAGE
 
 replicas:
   - name: webcompanion-deployment

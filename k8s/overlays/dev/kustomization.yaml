@@ -25,4 +25,4 @@ labels:
   - includeSelectors: true
     pairs:
       env: dev
-      message: DO_NOT_USE_IN_PRODUCTION
+      # message: DO_NOT_USE_IN_PRODUCTION
