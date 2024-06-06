@@ -5,10 +5,10 @@ resources:
   - ../../base
 
 patches:
-  - path: deploy.yaml
-    target:
-      kind: Deployment
-      name: webcompanion-deployment
+  # - path: deploy.yaml
+  #   target:
+  #     kind: Deployment
+  #     name: webcompanion-deployment
   - path: service.yaml
     target:
       kind: Service
@@ -25,3 +25,8 @@ labels:
   - includeSelectors: true
     pairs:
       env: prod
+      note: MAKE SURE TO USE WORKING IMAGE
+
+replicas:
+  - name: webcompanion-deployment
+    count: 3
