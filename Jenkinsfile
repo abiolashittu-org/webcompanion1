@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/dev'], [name: '*/qa'], [name: '*/prod']], userRemoteConfigs: [[url: 'https://github.com/abiolashittu-org/webcompanion1.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/dev'], [name: '*/qa'], [name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/abiolashittu-org/webcompanion1.git']]])
             }
         }
         stage('Sonarqube Analysis') {
