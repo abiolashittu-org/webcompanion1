@@ -25,3 +25,8 @@ labels:
   - includeSelectors: true
     pairs:
       env: prod
+      # note: DO_NOT_USE_IN_PRODUCTION
+
+replicas:
+  - name: webcompanion-deployment
+    count: 2

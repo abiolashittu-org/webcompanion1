@@ -6,66 +6,88 @@
     <title>Website Scanner</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        form {
-            max-width: 600px;
-            margin: 0 auto;
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
         }
         label {
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
+            color: #555;
         }
-        input[type="text"] {
+        input[type="text"],
+        select,
+        button {
             width: 100%;
-            padding: 8px;
-            margin-bottom: 20px;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
             box-sizing: border-box;
         }
-        select, button {
-            padding: 10px;
-            font-size: 16px;
-        }
         button {
-            background-color: #4CAF50;
+            background-color: #007bff;
             color: white;
             border: none;
             cursor: pointer;
+            font-size: 16px;
         }
         button:hover {
-            background-color: #45a049;
+            background-color: #0056b3;
         }
         #response {
             margin-top: 20px;
             white-space: pre-wrap;
-            border: 1px solid #ccc;
+            border: 1px solid #ddd;
             padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
         }
     </style>
 </head>
 <body>
 
-<h1>Website Scanner</h1>
+<div class="container">
+    <h1>Website Scanner</h1>
 
-<form id="scanForm">
-    <label for="url">Website URL:</label>
-    <input type="text" id="url" name="url" required>
+    <form id="scanForm">
+        <label for="url">Website URL:</label>
+        <input type="text" id="url" name="url" required>
 
-    <label for="task">Select Task:</label>
-    <select id="task" name="task">
-        <option value="performance">Performance</option>
-        <option value="errors">Errors</option>
-        <option value="security">Security</option>
-        <option value="seo">SEO</option>
-        <option value="chat">Chat Completion</option>
-    </select>
+        <label for="task">Select Task:</label>
+        <select id="task" name="task">
+            <option value="performance">Performance</option>
+            <option value="errors">Errors</option>
+            <option value="security">Security</option>
+            <option value="seo">SEO</option>
+            <option value="chat">Chat Completion</option>
+        </select>
 
-    <button type="submit">Scan Website</button>
-</form>
+        <button type="submit">Scan Website</button>
+    </form>
 
-<div id="response"></div>
+    <div id="response"></div>
+</div>
 
 <script>
     document.getElementById('scanForm').addEventListener('submit', function(event) {
