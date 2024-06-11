@@ -3,25 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Scanner</title>
+    <title>WebCompanion Home</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-align: right;
+        }
+        header a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+        }
+        header a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            flex: 1;
             padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-        }
-        .container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            width: 100%;
+            flex-direction: column;
         }
         h1 {
             font-size: 24px;
@@ -29,89 +42,54 @@
             text-align: center;
             color: #333;
         }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #555;
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        input[type="text"],
-        select,
-        button {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
+        .buttons a {
+            display: block;
+            padding: 12px 20px;
+            margin: 10px 0;
             border: 1px solid #ddd;
             border-radius: 5px;
-            box-sizing: border-box;
-        }
-        button {
+            text-align: center;
+            text-decoration: none;
+            width: 200px;
             background-color: #007bff;
             color: white;
-            border: none;
-            cursor: pointer;
             font-size: 16px;
         }
-        button:hover {
+        .buttons a:hover {
             background-color: #0056b3;
         }
-        #response {
-            margin-top: 20px;
-            white-space: pre-wrap;
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #f9f9f9;
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #fff;
+            border-top: 1px solid #ddd;
         }
     </style>
 </head>
 <body>
 
+<header>
+    <a href="#">Home</a>
+    <a href="#contact">Contact</a>
+</header>
+
 <div class="container">
-    <h1>Website Scanner</h1>
-
-    <form id="scanForm">
-        <label for="url">Website URL:</label>
-        <input type="text" id="url" name="url" required>
-
-        <label for="task">Select Task:</label>
-        <select id="task" name="task">
-            <option value="performance">Performance</option>
-            <option value="errors">Errors</option>
-            <option value="security">Security</option>
-            <option value="seo">SEO</option>
-            <option value="chat">Chat Completion</option>
-        </select>
-
-        <button type="submit">Scan Website</button>
-    </form>
-
-    <div id="response"></div>
+    <h1>Welcome to WebCompanion</h1>
+    <div class="buttons">
+        <a href="website-scanner.html">Website Scanner</a>
+        <a href="#blog">Blog Post</a>
+        <a href="#">Home</a>
+    </div>
 </div>
 
-<script>
-    document.getElementById('scanForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const url = document.getElementById('url').value;
-        const task = document.getElementById('task').value;
-
-        fetch('/scan', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ url, task }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('response').innerText = JSON.stringify(data, null, 2);
-        })
-        .catch(error => {
-            document.getElementById('response').innerText = 'Error: ' + error;
-        });
-    });
-</script>
+<footer>
+    &copy; WebCompanion.net 2024
+</footer>
 
 </body>
 </html>
