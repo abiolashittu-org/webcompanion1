@@ -104,9 +104,14 @@ def authors():
     return render_template('authors.html')
 
 @app.route('/')
-def index_demo_1():
+def webcompanion():
     session.pop('cookie', None)
     return render_template('webcompanion.html')
+
+@app.route('/')
+def website_scanner():
+    session.pop('cookie', None)
+    return render_template('website-scanner.html')
 
 @app.route('/profile')
 @login_required
