@@ -30,3 +30,14 @@ spec:
               cpu: "500m"
           ports:
             - containerPort: 5000
+          env:
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: webcompanion1-secrets
+                  key: OPENAI_API_KEY
+            - name: PAGESPEED_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: webcompanion1-secrets
+                  key: PAGESPEED_API_KEY
