@@ -63,6 +63,12 @@
             border-radius: 5px;
             background-color: #f9f9f9;
         }
+        .btn {
+            margin-top: 20px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -70,26 +76,31 @@
 <div class="container">
     <h1>Website Scanner</h1>
 
-    <form id="scanForm">
+    <form id="scanForm" action="{{ url_for('website_scanner') }}" method="post" enctype="multipart/form-data">
         <label for="url">Website URL:</label>
         <input type="text" id="url" name="url" required>
 
         <label for="task">Select Task:</label>
         <select id="task" name="task">
-            <option value="performance">Performance</option>
-            <option value="errors">Errors</option>
-            <option value="security">Security</option>
-            <option value="seo">SEO</option>
-            <option value="chat">Chat Completion</option>
+            {% for option in options %}
+                <option {% if option==selected_option %}selected{% endif %}>{{ option }}</option>
+            {% endfor %}
         </select>
 
         <button type="submit">Scan Website</button>
-    </form>
 
-    <div id="response"></div>
+        <div id="response">
+            {% if output %}
+                <textarea rows="10" cols="50">{{ output }}</textarea>
+            {% endif %}
+        </div>
+    </form>
+    <div class="btn">
+        <a href="{{ url_for('index') }}">Back to Home</a>
+    </div>
 </div>
 
-<script>
+<!-- <script>
     document.getElementById('scanForm').addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -111,7 +122,7 @@
             document.getElementById('response').innerText = 'Error: ' + error;
         });
     });
-</script>
+</script> -->
 
 </body>
 </html>

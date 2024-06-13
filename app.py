@@ -1,4 +1,6 @@
-from flask import Flask, render_template, url_for, make_response, redirect, request, session
+import json
+
+from flask import Flask, render_template, url_for, make_response, redirect, request, session, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
 import os
@@ -8,6 +10,7 @@ from sqlalchemy.sql import func
 from passlib.hash import sha256_crypt
 import logging
 from functools import wraps
+from helper import get_performance_score, get_security_score, get_webcompanion_response, get_error_score
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -104,14 +107,49 @@ def authors():
     return render_template('authors.html')
 
 @app.route('/')
-def webcompanion():
+def index():
     session.pop('cookie', None)
     return render_template('webcompanion.html')
 
-@app.route('/')
+@app.route('/website_scanner', methods=["GET", "POST"])
 def website_scanner():
     session.pop('cookie', None)
-    return render_template('website-scanner.html')
+    options = [
+        "Performance",
+        "Errors",
+        "Security",
+        "SEO",
+        "Chat"
+    ]
+    selected_option = "Performance"
+    output = ""
+    if request.method == 'POST':
+        url = request.form.get('url')
+        selected_option = request.form.get('task')
+
+        if not url or not selected_option:
+            output = jsonify({"error": "URL and task are required"}), 400
+
+        if selected_option == "Performance":
+            output = get_performance_score(url)
+            
+        elif selected_option == "Errors":
+            # Simulate an error check (replace with actual error checking tool if available)
+            output = get_error_score(url)
+            
+        elif selected_option == "Security":
+            output = get_security_score(url)
+        elif selected_option == "SEO":
+            # Simulate an SEO check (replace with actual SEO checking tool if available)
+            output = jsonify({"message": "SEO checking not implemented"})
+            
+        elif selected_option == "Chat":
+            prompt = f"Please scan the website at '{url}' for any performance, error, security, SEO, and accessibility issues. Provide a detailed report and remediation plan."
+            output = get_webcompanion_response(prompt)
+        else:
+            output = jsonify({"error": "Invalid task"}), 400
+            
+    return render_template('website-scanner.html', options=options, selected_option=selected_option, output=output)
 
 @app.route('/profile')
 @login_required
