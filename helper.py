@@ -19,7 +19,7 @@ PAGESPEED_API_KEY = os.getenv('PAGESPEED_API_KEY')
 
 
 # Load API keys from environment variables
-openai.api_key = OPENAI_API_KEY
+openai.api_key = OPENAI_API_KEY.strip()
 
 SSL_LABS_API_ENDPOINT = "https://api.ssllabs.com/api/v3/analyze"
 PAGESPEED_API_ENDPOINT = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed"
